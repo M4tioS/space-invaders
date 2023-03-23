@@ -2,7 +2,7 @@ package vinnsla;
 
 public class Data {
     private static final Data instance = new Data();
-    private int stig;
+    private int score;
     private int lvl;
 
     /**
@@ -33,15 +33,15 @@ public class Data {
      * @return stig
      */
 
-    public int getStig() {
-        return stig;
+    public int getScore() {
+        return score;
     }
 
     /**
      * Setter fyrir stig
-     * @param stig úr Leikur
+     * @param score úr Leikur
      */
-    public void setStig(int stig) {
-        this.stig = stig;
+    public void setScore(int score) {
+        this.score = score;
     }
 }
