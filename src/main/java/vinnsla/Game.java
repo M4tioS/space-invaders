@@ -44,16 +44,11 @@ public class Game {
     // Byr til nyja leik, endurstillur points og level. Byr til nyja skip
     public void newGame() {
         points.set(0);
-        level.set(0);
-    }
-
-    public void deleteShip(){
-
+        level.set(1);
     }
 
     public int getIntervall() { return Interval;
     }
-
 
 
     public void scoreUp(){

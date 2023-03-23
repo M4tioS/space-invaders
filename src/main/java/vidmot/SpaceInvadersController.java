@@ -52,6 +52,7 @@ public class SpaceInvadersController {
         game.newGame();
         KeyFrame k = new KeyFrame(Duration.millis(game.getIntervall()), event -> {
             setStefna(Direction.DOWN, 5);
+            setLevel();
         });
         t = new Timeline(k);
         t.setCycleCount(Timeline.INDEFINITE);
@@ -62,6 +63,15 @@ public class SpaceInvadersController {
         for (int i = 0; i < x; i++){
             leikbord.getShip().setRotate(d.getDeg());
             leikbord.getShip().moveShip();
+        }
+    }
+
+    private void setLevel(){
+        int i = game.getPoints();
+        if (i % 50 == 0 && i > 1){
+            game.levelUp();
+            double current = t.getRate();
+            t.setRate(current * 1.2);
         }
     }
 }
