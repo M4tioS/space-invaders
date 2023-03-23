@@ -7,9 +7,9 @@
 <?import vidmot.Leikbord?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane  minHeight="800" minWidth="1000" maxHeight="800" maxWidth="1000" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Leikbord prefHeight="358.0" prefWidth="619.0" BorderPane.alignment="CENTER" />
+      <Leikbord BorderPane.alignment="CENTER" />
    </center>
    <top>
       <AnchorPane prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
