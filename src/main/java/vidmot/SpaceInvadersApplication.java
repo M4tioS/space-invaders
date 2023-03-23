@@ -1,6 +1,7 @@
 package vidmot;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,9 +15,8 @@ public class SpaceInvadersApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SpaceInvadersApplication.class.getResource("menu-view.fxml"));
         Parent root = fxmlLoader.load();
-
-        Scene scene = new Scene(root, 400, 400);
         stage.setTitle(TITLE);
+        Scene scene = new Scene(root, 400, 500);
         stage.setScene(scene);
         stage.show();
     }

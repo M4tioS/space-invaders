@@ -10,12 +10,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Menu {
     @FXML
     private Button fxLoka;
     @FXML
-    private VBox fxVbox;
+    public VBox fxVbox;
     private final static String TITLE = "Space Invaders!";
 
     @FXML
@@ -24,13 +25,11 @@ public class Menu {
         FXMLLoader fxmlLoader = new FXMLLoader(SpaceInvadersApplication.class.getResource("spaceinvaders-view.fxml"));
         Parent root = fxmlLoader.load();
         SpaceInvadersController sc = fxmlLoader.getController();
-
         stage.setTitle(TITLE);
         Scene scene = new Scene(root, 400, 500);
         sc.orvatakkar(scene); // kalla á mapping fall fyrir takka
         stage.setScene(scene);
         stage.show();
-        sc.hefjaLeik(); // kalla á keyframe fall til að byrja leik
     }
     @FXML
     private void exitHandler() {

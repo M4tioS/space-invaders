@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 public class SpaceInvadersController {
 
+    public Label fxScoreMain;
     @FXML
     private Leikbord leikbord;
     private final Game game = new Game();
@@ -26,47 +27,34 @@ public class SpaceInvadersController {
     private final Data data = Data.getInstance();
 
     public void initialize(){
-
     }
 
-    public void orvatakkar(Scene scene) {
+    public void orvatakkar(Scene s) {
         map.put(KeyCode.RIGHT, Direction.RIGHT);
         map.put(KeyCode.LEFT, Direction.LEFT);
-        scene.addEventFilter(KeyEvent.ANY,
+        s.addEventFilter(KeyEvent.ANY,
                 event -> {
                     try {
                         if ((event.getCode()) == KeyCode.RIGHT){
-                            setStefna(Direction.RIGHT, 5);
+                            // move ship to the right
+                            //setStefna(Direction.RIGHT, 5);
+                            System.out.println("Right");
                         } else if ((event.getCode()) == KeyCode.LEFT){
-                            setStefna(Direction.LEFT, 5);
+                            //move ship to the left
+                            //setStefna(Direction.LEFT, 5);
+                            System.out.println("Left");
                         }
 
                     } catch (NullPointerException e){
                         event.consume();
                     }
-
         });
     }
 
-    public void hefjaLeik() {
-        game.newGame();
-        KeyFrame k = new KeyFrame(Duration.millis(game.getIntervall()), event -> {
-            setStefna(Direction.DOWN, 5);
-            setLevel();
-        });
-        t = new Timeline(k);
-        t.setCycleCount(Timeline.INDEFINITE);
-        t.play();
-    }
-
-    public void setStefna(Direction d, int x){
-        for (int i = 0; i < x; i++){
-            leikbord.getShip().setRotate(d.getDeg());
-            leikbord.getShip().moveShip();
-        }
-    }
-
-    private void setLevel(){
+    /**
+     * Hækka level eftir 50 stig og auka hraða
+     */
+    public void setLevel(){
         int i = game.getPoints();
         if (i % 50 == 0 && i > 1){
             game.levelUp();
