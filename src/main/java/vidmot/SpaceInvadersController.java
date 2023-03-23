@@ -18,6 +18,7 @@ import java.util.HashMap;
 
 public class SpaceInvadersController {
 
+    // Tilviksbreytur
     public Label fxScoreMain;
     @FXML
     private Leikbord leikbord;
@@ -61,5 +62,15 @@ public class SpaceInvadersController {
             double current = t.getRate();
             t.setRate(current * 1.2);
         }
+    }
+
+    public void startTheGame(){
+        KeyFrame k = new KeyFrame(Duration.millis(game.getIntervall()),
+                e-> {
+                    fxScoreMain.setText(String.valueOf(game.getPoints()));
+                });
+        t = new Timeline(k);           // tengjum timeline og tímabilið
+        t.setCycleCount(Timeline.INDEFINITE);// hve lengi tímalínan keyrist
+        t.play();
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<fx:root type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx"
+<fx:root fx:id="fxAmmo" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
 />

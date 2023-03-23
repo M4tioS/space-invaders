@@ -8,7 +8,7 @@ public class Loftstein extends ImageView {
 
     public double OFFSET = 0.5;
     public Loftstein(){
-        FXML_Lestur.lesa(this, "lofstein.fxml");
+        FXML_Lestur.lesa(this, "loftstein.fxml");
 
     }
 
