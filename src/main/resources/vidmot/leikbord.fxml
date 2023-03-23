@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+<?import vidmot.Geimskip?>
 <fx:root minWidth="1000" minHeight="600" maxWidth="1000" maxHeight="600" type="javafx.scene.layout.Pane"
-         xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" />
+         xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Geimskip fx:id="fxGeimskip"></Geimskip>
+    </children>
+</fx:root>

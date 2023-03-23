@@ -9,12 +9,12 @@
 
 <BorderPane  minHeight="800" minWidth="1000" maxHeight="800" maxWidth="1000" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Leikbord BorderPane.alignment="CENTER" />
+      <Leikbord fx:id="fxGamePane" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <AnchorPane prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="104.0" layoutY="3.0" prefHeight="38.0" prefWidth="103.0" />
+            <Label fx:id="fxScoreMain" layoutX="104.0" layoutY="3.0" prefHeight="38.0" prefWidth="103.0" />
             <Label layoutX="45.0" layoutY="3.0" prefHeight="37.0" prefWidth="59.0" text="Score">
                <font>
                   <Font size="16.0" />
