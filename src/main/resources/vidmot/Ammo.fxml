@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<fx:root fx:id="fxAmmo" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml"
-/>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<fx:root arcHeight="5.0" arcWidth="5.0" fill="#964B00" height="4.0" rotate="90.0" stroke="BLACK" strokeType="INSIDE" type="javafx.scene.shape.Rectangle" width="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" />
