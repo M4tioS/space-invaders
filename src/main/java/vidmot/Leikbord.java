@@ -16,12 +16,15 @@ public class Leikbord extends Pane {
     // Tilviksbreytur
     @FXML
     private Geimskip fxGeimskip;
-    private Game game;
     @FXML
-    private Ammo fxAmmo;
+    private Leikbord fxLeikbord;
+    private Game game;
+
     private Timeline t;
     private Timeline objT;
+    private Timeline ammoT;
     private int count = 0;
+    private ObservableList<Ammo> ammo = FXCollections.observableArrayList();
     private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
 
 
@@ -31,6 +34,7 @@ public class Leikbord extends Pane {
         FXML_Lestur.lesa(this, "leikbord.fxml");
         newSpaceship();
         startGameNewMeteor();
+        shootingAmmo();
         //shootHitMeteor();
         newMeteorLoop();
         moveObjects();
@@ -55,24 +59,42 @@ public class Leikbord extends Pane {
         }
     }
 
-/*
-    //Er að vakta y-ás fyrir viðmótshlut ammo
-    public void shootHitMeteor(){
-        fxAmmo.yProperty().addListener((observable, oldValue, newValue) -> {
-            for(int i = 0; i < getMeteors().size(); i++){
-                if(didHit(getMeteors().get(i))){
-                    deleteMeteor(i);
+    public void shootHitMeteor() {
+        for (Ammo value : ammo) {
+            value.yProperty().addListener((observable, oldValue, newValue) -> {
+                for (int i = 0; i < getMeteors().size(); i++) {
+                    if (didHit(getMeteors().get(i))) {
+                        deleteMeteor(i);
+                    }
                 }
-            }
-        });
-    }*/
+            });
+        }
 
+    }
 
+    public void shootingAmmo(){
+        KeyFrame k = new KeyFrame(Duration.millis(200),
+                e-> {
+                    shoot();
+                });
+        ammoT = new Timeline(k);
+        ammoT.setCycleCount(Timeline.INDEFINITE);
+        ammoT.play();
+    }
 
-    /**
-     * Eyðir út lofsteinn sem var við árekstur
-     * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
-     */
+    private void shoot(){
+        Ammo a = new Ammo();
+        this.getChildren().add(a);
+        ammo.add(a);
+        a.setY(getShip().getY());
+        a.setX(getShip().getX());
+        a.moveAmmo();
+    }
+
+        /**
+         * Eyðir út lofsteinn sem var við árekstur
+         * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
+         */
     private void deleteMeteor(int m){
         meteors.remove(m);
         this.getChildren().remove(m);
@@ -95,7 +117,7 @@ public class Leikbord extends Pane {
         clearTable();
         fxGeimskip = newSpaceship();
         startGameNewMeteor();
-        //shootHitMeteor();
+        shootHitMeteor();
         newMeteorLoop();
         moveObjects();
     }
@@ -106,7 +128,12 @@ public class Leikbord extends Pane {
      * @return true eða false
      */
     public boolean didHit(Loftstein m){
-        return fxAmmo.getBoundsInParent().intersects(m.getBoundsInParent());
+        for (Ammo value : ammo) {
+            if (value.getBoundsInParent().intersects(m.getBoundsInParent())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -142,12 +169,18 @@ public class Leikbord extends Pane {
         KeyFrame k = new KeyFrame(Duration.millis(20),
                 e-> {
                     moveAllMeteors();
+                    moveAmmo();
                 });
         objT = new Timeline(k);
         objT.setCycleCount(Timeline.INDEFINITE);
         objT.play();
     }
 
+    private void moveAmmo(){
+        for (Ammo value : ammo) {
+            value.moveAmmo();
+        }
+    }
     /**
      * Getter fyrir skip
      * @return geimskip hlut
@@ -165,9 +198,15 @@ public class Leikbord extends Pane {
             getChildren().remove(fxGeimskip);
         }
         fxGeimskip = new Geimskip();
-        System.out.println("new ship: " + this.getWidth() + " " + this.getHeight());
         getChildren().add(fxGeimskip);
+        System.out.println(getHeight() + " og " + getWidth());
+        setPoistionSpaceShip();
         return fxGeimskip;
+    }
+
+    private void setPoistionSpaceShip(){
+        fxGeimskip.setY(425);
+        fxGeimskip.setX(180);
     }
 
     /**

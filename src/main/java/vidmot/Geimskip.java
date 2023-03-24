@@ -37,11 +37,7 @@ public class Geimskip extends ImageView {
         return health;
     }
 
-    public void moveShip(){
-        Leikbord p = (Leikbord) this.getParent();
-        setX((int)(getX() + p.getWidth() + (int) Math.cos(Math.toRadians(getRotate()))*OFFSET) % (int)p.getWidth());
-        setY((int)(getY() + p.getHeight() - (int) Math.sin(Math.toRadians(getRotate())) * OFFSET) % (int)p.getHeight());
-    }
+
 
 
 }

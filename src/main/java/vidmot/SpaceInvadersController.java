@@ -33,6 +33,10 @@ public class SpaceInvadersController {
         startTheGame();
     }
 
+    /**
+     * Örva
+     * @param s
+     */
     public void orvatakkar(Scene s) {
         map.put(KeyCode.RIGHT, Direction.RIGHT);
         map.put(KeyCode.LEFT, Direction.LEFT);
@@ -40,21 +44,29 @@ public class SpaceInvadersController {
                 event -> {
                     try {
                         if ((event.getCode()) == KeyCode.RIGHT){
-                            // move ship to the right
-                            //setStefna(Direction.RIGHT, 5);
-                            System.out.println("Right");
+                           moveShipRight();
                         } else if ((event.getCode()) == KeyCode.LEFT){
-                            //move ship to the left
-                            //setStefna(Direction.LEFT, 5);
-                            System.out.println("Left");
+                            moveShipLeft();
                         }
-
                     } catch (NullPointerException e){
                         event.consume();
                     }
         });
     }
 
+
+    /*
+    Færir geimskipið til hægri um 5 pixlar
+     */
+    private void moveShipRight(){
+        fxGamePane.getShip().setX(fxGamePane.getShip().getX()+5);
+    }
+    /*
+    Færir geimskipið til vinstri um 5 pixlar
+   */
+    private void moveShipLeft(){
+        fxGamePane.getShip().setX(fxGamePane.getShip().getX()-5);
+    }
     /**
      * Hækka level eftir 50 stig og auka hraða
      */

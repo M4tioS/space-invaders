@@ -1,9 +1,9 @@
 package vidmot;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-public class Ammo extends ImageView {
+import javafx.scene.shape.Rectangle;
+
+public class Ammo extends Rectangle {
 
 
     public int OFFSET = 3;
