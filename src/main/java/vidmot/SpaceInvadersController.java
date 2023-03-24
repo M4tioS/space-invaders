@@ -60,7 +60,7 @@ public class SpaceInvadersController {
      */
     public void setLevel(){
         int i = game.getPoints();
-        if (i % 50 == 0 && i > 1){
+        if (i % 53 == 0 && i > 1){ //53 is a prime
             game.levelUp();
             double current = t.getRate();
             t.setRate(current * 1.2);
