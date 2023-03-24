@@ -1,3 +1,7 @@
 .bord{
+-fx-background-color: RED;
 -fx-background-image: url("photos/background.gif")
+}
+.root{
+-fx-font-size: 16px;
 }

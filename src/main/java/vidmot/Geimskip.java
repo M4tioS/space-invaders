@@ -17,6 +17,7 @@ public class Geimskip extends ImageView {
         health = new SimpleIntegerProperty();
         newSkip();
         FXML_Lestur.lesa(this, "geimskip.fxml");
+
         setY(550);
     }
 

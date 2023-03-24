@@ -22,14 +22,14 @@ public class SpaceInvadersController {
     @FXML
     private Label fxScoreMain;
     @FXML
-    private Leikbord leikbord;
+    private Leikbord fxGamePane;
     private final Game game = new Game();
     private static final HashMap<KeyCode, Direction> map = new HashMap<>();
     private Timeline t;
     private final Data data = Data.getInstance();
 
     public void initialize(){
-        leikbord.getStyleClass().add(".bord");
+        fxGamePane.getStyleClass().add("bord");
         startTheGame();
     }
 

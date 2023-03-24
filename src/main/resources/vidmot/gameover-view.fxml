@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="394.0" stylesheets="@../stylesheets/styles-spaceinvaders.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.GameOver">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="394.0" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.GameOver">
    <children>
       <ListView fx:id="fxListView" layoutX="61.0" layoutY="26.0" prefHeight="166.0" prefWidth="272.0" />
       <Label layoutX="79.0" layoutY="201.0" text="Username">

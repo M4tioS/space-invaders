@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="245.0" prefWidth="284.0" spacing="20.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
+<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="245.0" prefWidth="290.0" spacing="20.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>

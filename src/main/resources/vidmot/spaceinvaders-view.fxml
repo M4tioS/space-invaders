@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import vidmot.Leikbord?>
 
-<BorderPane maxHeight="800" maxWidth="1000" minHeight="800" minWidth="1000" stylesheets="@../stylesheets/styles-spaceinvaders.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.SpaceInvadersController">
+<BorderPane maxHeight="500.0" maxWidth="400.0" minHeight="500.0" minWidth="400.0" stylesheets="@../stylesheets/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.SpaceInvadersController">
    <center>
       <Leikbord fx:id="fxGamePane" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <AnchorPane prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="fxScoreMain" layoutX="104.0" layoutY="3.0" prefHeight="38.0" prefWidth="103.0" />
-            <Label layoutX="45.0" layoutY="3.0" prefHeight="37.0" prefWidth="59.0" text="Score">
+            <Label fx:id="fxScoreMain" layoutX="104.0" layoutY="3.0" prefHeight="19.0" prefWidth="103.0" textFill="WHITE" />
+            <Label layoutX="45.0" layoutY="3.0" prefHeight="18.0" prefWidth="59.0" text="Score" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
