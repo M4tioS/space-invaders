@@ -2,7 +2,7 @@
 
 
 <?import vidmot.Geimskip?>
-<fx:root minWidth="1000" minHeight="600" maxWidth="1000" maxHeight="600" type="javafx.scene.layout.Pane"
+<fx:root minHeight="290" minWidth="245" type="javafx.scene.layout.Pane"
          xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
         <Geimskip fx:id="fxGeimskip"></Geimskip>

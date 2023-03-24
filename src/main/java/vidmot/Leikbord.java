@@ -5,9 +5,9 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import vinnsla.Game;
 
 import java.util.Random;
 
@@ -16,9 +16,11 @@ public class Leikbord extends Pane {
     // Tilviksbreytur
     @FXML
     private Geimskip fxGeimskip;
+    private Game game;
     @FXML
     private Ammo fxAmmo;
     private Timeline t;
+    private Timeline objT;
     private int count = 0;
     private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
 
@@ -28,26 +30,28 @@ public class Leikbord extends Pane {
     public Leikbord(){
         FXML_Lestur.lesa(this, "leikbord.fxml");
         newSpaceship();
-        newMeteors();
+        startGameNewMeteor();
         //shootHitMeteor();
-        lykkjaMeteor();
+        newMeteorLoop();
+        moveObjects();
     }
 
 
-
-    // Býr til nýjar loftsteinnar á x-ás frá 0 úpp í 1000 á random stað.
-    // og y-ás er byrjuð frá 10 og fer úpp í 50 pixlar.
-    public void newMeteors(){
-        int count = 10;
-        for (int i = 10; i < 1000; i+=200){
+    /**
+     * Býr til 5 steinar í upphafi leiks
+     */
+    public void startGameNewMeteor(){
+        int count = -50;
+        for (int i = 0; i < 5; i++){
             Loftstein m = new Loftstein();
             Random r = new Random();
-            m.setX(r.nextInt(i));
+            m.setX(r.nextInt(290));
+            System.out.println(this.getWidth());
             m.setY(count);
             this.getChildren().add(m);
             meteors.add(m);
             m.moveMeteor();
-            count += 10;
+            count -= 50;
         }
     }
 
@@ -66,7 +70,7 @@ public class Leikbord extends Pane {
 
 
     /**
-     * Eyðir út lofsteinn
+     * Eyðir út lofsteinn sem var við árekstur
      * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
      */
     private void deleteMeteor(int m){
@@ -75,20 +79,25 @@ public class Leikbord extends Pane {
     }
 
 
-    // Hreinsa lofsteinar af leikbord
+    /**
+     * Eyðir út öllum loftsteinum
+     */
     public void clearTable(){
         for(Loftstein m: meteors) getChildren().remove(m);
         meteors.clear();
     }
 
 
-    // Býr til nýja leik
+    /**
+     * Þegar ný leikur er byrjað er hreinsað allt og búið upp á nýtt
+     */
     public void newGame(){
         clearTable();
         fxGeimskip = newSpaceship();
-        newMeteors();
+        startGameNewMeteor();
         //shootHitMeteor();
-        lykkjaMeteor();
+        newMeteorLoop();
+        moveObjects();
     }
 
     /**
@@ -100,48 +109,81 @@ public class Leikbord extends Pane {
         return fxAmmo.getBoundsInParent().intersects(m.getBoundsInParent());
     }
 
-    // Lykkja fyrir lofsteinar
-    public void lykkjaMeteor(){
+    /**
+     * Lykja til að búa til nýta lofsteina
+     */
+    public void newMeteorLoop(){
         KeyFrame k = new KeyFrame(Duration.millis(1300),
                 e-> {
-                    moveAllMeteors();
-                    newMeteors();
-                    double currentRate = t.getRate();
-                    if(this.count % 6 == 0){
-                        t.setRate(currentRate+currentRate*0.05);
-                    }
-                    this.count++;
+                    newMeteor();
                 });
         t = new Timeline(k);
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
     }
 
-    // Skilar viðmótshlut af skip
+    /**
+     * Spawning new meteors after the game starts
+     */
+    private void newMeteor(){
+        Loftstein loftstein = new Loftstein();
+        Random r = new Random();
+        loftstein.setX(r.nextInt((int)this.getWidth()));
+        loftstein.setY(-150);
+        this.getChildren().add(loftstein);
+        meteors.add(loftstein);
+        loftstein.moveMeteor();
+    }
+
+    /**
+     * Loop to move objects such as ammo and Meteors
+     */
+    public void moveObjects(){
+        KeyFrame k = new KeyFrame(Duration.millis(20),
+                e-> {
+                    moveAllMeteors();
+                });
+        objT = new Timeline(k);
+        objT.setCycleCount(Timeline.INDEFINITE);
+        objT.play();
+    }
+
+    /**
+     * Getter fyrir skip
+     * @return geimskip hlut
+     */
     public Geimskip getShip(){
         return fxGeimskip;
     }
 
-    // Byr til nyja geimskip. Ef núverandi skip er til, hann er eyð útt og
-    // bætt við nýja í staðinn.
+    /**
+     * Gera nýtt geimskip ef núverandi er til eyða þvi
+     * @return nýtt geimskip
+     */
     public Geimskip newSpaceship(){
         if(fxGeimskip != null){
             getChildren().remove(fxGeimskip);
         }
         fxGeimskip = new Geimskip();
+        System.out.println("new ship: " + this.getWidth() + " " + this.getHeight());
         getChildren().add(fxGeimskip);
         return fxGeimskip;
     }
 
-    // Skilar lista af lofteinum
+    /**
+     * Skilar listan af loftsteinum
+     * @return obsv list af loftsteinum
+     */
     public ObservableList<Loftstein> getMeteors(){
         return meteors;
     }
 
-    // Hreyfir allar lofsteinnar niður á y-ásnum
+    /**
+     * Hreyfa allar loftsteinar
+     */
     public void moveAllMeteors(){
-        for(int i = 0; i < meteors.size(); i++){
-            meteors.get(i).moveMeteor();
+        for (Loftstein meteor : meteors) {
+            meteor.moveMeteor();
         }
     }
 }

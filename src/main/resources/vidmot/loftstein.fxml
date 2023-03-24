@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<fx:root fx:id="fxMeteor" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml"
-/>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<fx:root fx:id="fxMeteor" fitHeight="72.0" fitWidth="51.0" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <image>
+      <Image url="@../stylesheets/photos/Daco_1054722.png" />
+   </image>
+</fx:root>

@@ -5,20 +5,15 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.ImageView;
 
 public class Geimskip extends ImageView {
-
-
-    // Tilviksbreytur
     private IntegerProperty health;
     private int OFFSET = 1;
 
 
-    // Constructor
     public Geimskip(){
         health = new SimpleIntegerProperty();
         newSkip();
         FXML_Lestur.lesa(this, "geimskip.fxml");
 
-        setY(550);
     }
 
     private void newSkip(){

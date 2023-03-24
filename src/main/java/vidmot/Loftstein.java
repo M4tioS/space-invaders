@@ -9,11 +9,13 @@ public class Loftstein extends ImageView {
     public double OFFSET = 0.5;
     public Loftstein(){
         FXML_Lestur.lesa(this, "loftstein.fxml");
-
     }
 
 
     public void moveMeteor(){
-        setY(getY()+OFFSET);
+        for (int i = 0; i < 5; i++){
+            setY(getY()+0.5);
+        }
+
     }
 }
