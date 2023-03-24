@@ -16,7 +16,7 @@ public class SpaceInvadersApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(SpaceInvadersApplication.class.getResource("menu-view.fxml"));
         Parent root = fxmlLoader.load();
         stage.setTitle(TITLE);
-        Scene scene = new Scene(root, 290, 245);
+        Scene scene = new Scene(root, 429, 342);
         stage.setScene(scene);
         stage.show();
     }

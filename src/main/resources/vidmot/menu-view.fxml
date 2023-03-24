@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="245.0" prefWidth="290.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
+<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="342.0" prefWidth="429.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
    <ImageView fitHeight="233.0" fitWidth="415.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../stylesheets/photos/banner.png" />
@@ -17,6 +17,6 @@
       </VBox.margin></Button>
    <Button fx:id="fxLoka" onAction="#exitHandler" prefHeight="26.0" prefWidth="100.0" text="Exit">
       <VBox.margin>
-         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
       </VBox.margin></Button>
 </VBox>
