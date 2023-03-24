@@ -2,14 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="245.0" prefWidth="290.0" spacing="20.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <ImageView fitHeight="105.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true" />
-    <Button onAction="#playHandler" prefHeight="26.0" prefWidth="101.0" text="Play" />
-   <Button fx:id="fxLoka" onAction="#exitHandler" prefHeight="26.0" prefWidth="100.0" text="Exit" />
+<VBox fx:id="fxVbox" alignment="CENTER" prefHeight="245.0" prefWidth="290.0" stylesheets="@../stylesheets/styles-menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Menu">
+   <ImageView fitHeight="233.0" fitWidth="415.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../stylesheets/photos/banner.png" />
+      </image></ImageView>
+    <Button onAction="#playHandler" prefHeight="26.0" prefWidth="101.0" text="Play">
+      <VBox.margin>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </VBox.margin></Button>
+   <Button fx:id="fxLoka" onAction="#exitHandler" prefHeight="26.0" prefWidth="100.0" text="Exit">
+      <VBox.margin>
+         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+      </VBox.margin></Button>
 </VBox>

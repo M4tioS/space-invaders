@@ -1,0 +1,15 @@
+.root{
+-fx-font-size: 14px;
+-fx-background-color: #223555;
+}
+.button{
+-fx-background-color: #F9E102;
+}
+
+.button:hover{
+-fx-background-color: #017D85;
+}
+
+.button:pressed{
+-fx-background-color: #7481C0;
+}

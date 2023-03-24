@@ -1,5 +1,10 @@
+.root{
+-fx-font-size: 14px;
+-fx-background-color: #223555;
+-fx-text-fill: #FFFFFF;
+}
+
 .bord{
--fx-background-color: RED;
 -fx-background-image: url("photos/background.gif")
 }
 .root{
