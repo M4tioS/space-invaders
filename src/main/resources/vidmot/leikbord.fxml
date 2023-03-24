@@ -4,6 +4,9 @@
 <?import vidmot.Geimskip?>
 <fx:root minHeight="290" minWidth="245" type="javafx.scene.layout.Pane"
          xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<<<<<<< HEAD
     <children>
     </children>
+=======
+>>>>>>> 1a2feef2747b56103216fe2381abc1d579627697
 </fx:root>
