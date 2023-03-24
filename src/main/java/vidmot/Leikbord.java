@@ -35,7 +35,6 @@ public class Leikbord extends Pane {
         newSpaceship();
         startGameNewMeteor();
         shootingAmmo();
-        //shootHitMeteor();
         newMeteorLoop();
         moveObjects();
     }
@@ -64,7 +63,8 @@ public class Leikbord extends Pane {
             value.yProperty().addListener((observable, oldValue, newValue) -> {
                 for (int i = 0; i < getMeteors().size(); i++) {
                     if (didHit(getMeteors().get(i))) {
-                        deleteMeteor(i);
+                        deleteMeteor(getMeteors().get(i));
+                        deleteAmmo(value);
                     }
                 }
             });
@@ -72,8 +72,11 @@ public class Leikbord extends Pane {
 
     }
 
+    private void deleteAmmo(Ammo a){
+        getChildren().remove(a);
+    }
     public void shootingAmmo(){
-        KeyFrame k = new KeyFrame(Duration.millis(200),
+        KeyFrame k = new KeyFrame(Duration.millis(500),
                 e-> {
                     shoot();
                 });
@@ -95,9 +98,9 @@ public class Leikbord extends Pane {
          * Eyðir út lofsteinn sem var við árekstur
          * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
          */
-    private void deleteMeteor(int m){
-        meteors.remove(m);
-        this.getChildren().remove(m);
+    private void deleteMeteor(Loftstein m){
+        getChildren().remove(m);
+        getMeteors().remove(m);
     }
 
 
@@ -170,12 +173,26 @@ public class Leikbord extends Pane {
                 e-> {
                     moveAllMeteors();
                     moveAmmo();
+                    shootHitMeteor();
+                    checkAmmoOutOfMap();
+                    System.out.println("Meteor fjoldi: " + meteors.size());
+                    System.out.println("Ammo fjoldi: " + ammo.size());
                 });
         objT = new Timeline(k);
         objT.setCycleCount(Timeline.INDEFINITE);
         objT.play();
     }
 
+    private void checkAmmoOutOfMap(){
+        for(Ammo a : ammo){
+            if(a.getY()==0){
+                getChildren().remove(a);
+            }
+        }
+        if(ammo.size()>10){
+            ammo.remove(10, ammo.size());
+        }
+    }
     private void moveAmmo(){
         for (Ammo value : ammo) {
             value.moveAmmo();
