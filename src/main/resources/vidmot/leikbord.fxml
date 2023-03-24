@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<<<<<<< HEAD
-
-<fx:root minWidth="290" minHeight="290" type="javafx.scene.layout.Pane"
-=======
 <?import vidmot.Geimskip?>
 <fx:root minHeight="290" minWidth="245" type="javafx.scene.layout.Pane"
->>>>>>> 931420ef0ba4390933fcef225d5eb6b1eae57a32
          xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+    <children>
+        <Geimskip fx:id="fxGeimskip"></Geimskip>
+    </children>
 </fx:root>
