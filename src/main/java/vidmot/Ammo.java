@@ -12,8 +12,6 @@ public class Ammo extends ImageView {
 
     }
 
-
-
     public void moveAmmo(){
         setY(getY()-OFFSET);
     }

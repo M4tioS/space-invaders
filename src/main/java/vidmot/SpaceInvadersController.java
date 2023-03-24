@@ -19,7 +19,8 @@ import java.util.HashMap;
 public class SpaceInvadersController {
 
     // Tilviksbreytur
-    public Label fxScoreMain;
+    @FXML
+    private Label fxScoreMain;
     @FXML
     private Leikbord leikbord;
     private final Game game = new Game();
@@ -28,6 +29,8 @@ public class SpaceInvadersController {
     private final Data data = Data.getInstance();
 
     public void initialize(){
+        leikbord.getStyleClass().add(".bord");
+        startTheGame();
     }
 
     public void orvatakkar(Scene s) {
@@ -67,6 +70,7 @@ public class SpaceInvadersController {
     public void startTheGame(){
         KeyFrame k = new KeyFrame(Duration.millis(game.getIntervall()),
                 e-> {
+                    setLevel();
                     fxScoreMain.setText(String.valueOf(game.getPoints()));
                 });
         t = new Timeline(k);           // tengjum timeline og tímabilið

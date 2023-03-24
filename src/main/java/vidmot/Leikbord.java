@@ -49,14 +49,11 @@ public class Leikbord extends Pane {
             m.moveMeteor();
             count += 10;
         }
-
     }
 
-    /*
-    Er að vakta y-ás fyrir viðmótshlut ammo
-
-
-        public void shootHitMeteor(){
+/*
+    //Er að vakta y-ás fyrir viðmótshlut ammo
+    public void shootHitMeteor(){
         fxAmmo.yProperty().addListener((observable, oldValue, newValue) -> {
             for(int i = 0; i < getMeteors().size(); i++){
                 if(didHit(getMeteors().get(i))){
@@ -64,8 +61,8 @@ public class Leikbord extends Pane {
                 }
             }
         });
-    }
-     */
+    }*/
+
 
 
     /**
@@ -107,7 +104,7 @@ public class Leikbord extends Pane {
     public void lykkjaMeteor(){
         KeyFrame k = new KeyFrame(Duration.millis(1300),
                 e-> {
-
+                    moveAllMeteors();
                     newMeteors();
                     double currentRate = t.getRate();
                     if(this.count % 6 == 0){

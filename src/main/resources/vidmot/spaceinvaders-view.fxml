@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import vidmot.Leikbord?>
 
-<BorderPane maxHeight="800" maxWidth="1000" minHeight="800" minWidth="1000" stylesheets="@../../stylesheets/styles-spaceinvaders.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.SpaceInvadersController">
+<BorderPane maxHeight="800" maxWidth="1000" minHeight="800" minWidth="1000" stylesheets="@../stylesheets/styles-spaceinvaders.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.SpaceInvadersController">
    <center>
       <Leikbord fx:id="fxGamePane" BorderPane.alignment="CENTER" />
    </center>
