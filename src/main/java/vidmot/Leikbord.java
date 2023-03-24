@@ -19,6 +19,7 @@ public class Leikbord extends Pane {
     @FXML
     private Ammo fxAmmo;
     private Timeline t;
+    private Timeline tAmmo;
     private int count = 0;
     private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
 
@@ -28,6 +29,7 @@ public class Leikbord extends Pane {
     public Leikbord(){
         FXML_Lestur.lesa(this, "leikbord.fxml");
         newSpaceship();
+        //spaceShipShoot();
         newMeteors();
         //shootHitMeteor();
         lykkjaMeteor();
@@ -51,8 +53,12 @@ public class Leikbord extends Pane {
         }
     }
 
-/*
+
     //Er að vakta y-ás fyrir viðmótshlut ammo
+
+    /*
+
+     */
     public void shootHitMeteor(){
         fxAmmo.yProperty().addListener((observable, oldValue, newValue) -> {
             for(int i = 0; i < getMeteors().size(); i++){
@@ -61,7 +67,7 @@ public class Leikbord extends Pane {
                 }
             }
         });
-    }*/
+    }
 
 
 
@@ -81,13 +87,27 @@ public class Leikbord extends Pane {
         meteors.clear();
     }
 
+    /*
+        private void spaceShipShoot(){
+        KeyFrame k = new KeyFrame(Duration.millis(500),
+                e-> {
+
+                    fxAmmo = new Ammo();
+
+                });
+        tAmmo.setCycleCount(Timeline.INDEFINITE);
+        tAmmo.play();
+    }
+     */
+
+
 
     // Býr til nýja leik
     public void newGame(){
         clearTable();
         fxGeimskip = newSpaceship();
         newMeteors();
-        //shootHitMeteor();
+        shootHitMeteor();
         lykkjaMeteor();
     }
 
