@@ -199,8 +199,7 @@ public class Leikbord extends Pane {
                     moveAllMeteors();
                     moveAmmo();
                     shootHitMeteor();
-                    checkAmmoOutOfMap();
-
+                    meteorDeleteOfMap();
                     for(Loftstein m: meteors) if (meteorHitSpaceShip(m)){
                         closeGame();
                     }
@@ -211,7 +210,18 @@ public class Leikbord extends Pane {
         objT.setCycleCount(Timeline.INDEFINITE);
         objT.play();
     }
+    private Loftstein meteorOfMap(){
+        for(Loftstein m: meteors) if(m.getY()>435) return m;
+        return null;
+    }
 
+    private void meteorDeleteOfMap(){
+        if(meteorOfMap() != null){
+            this.getChildren().remove(meteorOfMap());
+            meteors.remove(meteorOfMap());
+
+        }
+    }
 
     public void closeGame(){
         t.stop();
@@ -224,13 +234,7 @@ public class Leikbord extends Pane {
     public boolean isGameover(){
         return gameover;
     }
-    private void checkAmmoOutOfMap(){
-        for(Ammo a : ammo){
-            if(a.getY()==0){
-                getChildren().remove(a);
-            }
-        }
-    }
+
     private void moveAmmo(){
         for (Ammo value : ammo) {
             value.moveAmmo();
