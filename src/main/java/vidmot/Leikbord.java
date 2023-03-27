@@ -23,6 +23,8 @@ public class Leikbord extends Pane {
     private Timeline t;
     private Timeline objT;
     private Timeline ammoT;
+    private Timeline deleteAmmoT;
+
     private boolean gameover = false;
     private int count = 0;
     private ObservableList<Ammo> ammo = FXCollections.observableArrayList();
@@ -36,6 +38,7 @@ public class Leikbord extends Pane {
         newSpaceship();
         startGameNewMeteor();
         shootingAmmo();
+        deletingAmmo();
         newMeteorLoop();
         moveObjects();
     }
@@ -91,6 +94,17 @@ public class Leikbord extends Pane {
         ammoT.play();
     }
 
+    public void deletingAmmo(){
+        KeyFrame k = new KeyFrame(Duration.millis(500),
+                e-> {
+                    deleteShoot();
+                });
+        deleteAmmoT = new Timeline(k);
+        deleteAmmoT.setCycleCount(Timeline.INDEFINITE);
+        deleteAmmoT.setDelay(Duration.millis(5000));
+        deleteAmmoT.play();
+    }
+
     private void shoot(){
         Ammo a = new Ammo();
         this.getChildren().add(a);
@@ -100,6 +114,11 @@ public class Leikbord extends Pane {
         a.moveAmmo();
     }
 
+    private void deleteShoot(){
+        ammo.remove(ammo.get(0));
+        this.getChildren().remove(ammo.get(0));
+
+    }
         /**
          * Eyðir út lofsteinn sem var við árekstur
          * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
@@ -207,9 +226,6 @@ public class Leikbord extends Pane {
             if(a.getY()==0){
                 getChildren().remove(a);
             }
-        }
-        if(ammo.size()%10 == 0){
-            ammo.remove(10, ammo.size());
         }
     }
     private void moveAmmo(){
