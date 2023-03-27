@@ -200,6 +200,7 @@ public class Leikbord extends Pane {
                     moveAmmo();
                     shootHitMeteor();
                     checkAmmoOutOfMap();
+
                     for(Loftstein m: meteors) if (meteorHitSpaceShip(m)){
                         closeGame();
                     }
@@ -211,10 +212,12 @@ public class Leikbord extends Pane {
         objT.play();
     }
 
+
     public void closeGame(){
         t.stop();
         objT.stop();
         ammoT.stop();
+        deleteAmmoT.stop();
         gameover = true;
     }
 
