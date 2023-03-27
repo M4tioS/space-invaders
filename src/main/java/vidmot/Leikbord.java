@@ -23,6 +23,7 @@ public class Leikbord extends Pane {
     private Timeline t;
     private Timeline objT;
     private Timeline ammoT;
+    private boolean gameover = false;
     private int count = 0;
     private ObservableList<Ammo> ammo = FXCollections.observableArrayList();
     private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
@@ -56,6 +57,11 @@ public class Leikbord extends Pane {
             m.moveMeteor();
             count -= 50;
         }
+    }
+
+    private boolean meteorHitSpaceShip(Loftstein m){
+
+        return fxGeimskip.getBoundsInParent().intersects(m.getBoundsInParent());
     }
 
     public void shootHitMeteor() {
@@ -175,6 +181,9 @@ public class Leikbord extends Pane {
                     moveAmmo();
                     shootHitMeteor();
                     checkAmmoOutOfMap();
+                    for(Loftstein m: meteors) if (meteorHitSpaceShip(m)){
+                        closeGame();
+                    }
                     System.out.println("Meteor fjoldi: " + meteors.size());
                     System.out.println("Ammo fjoldi: " + ammo.size());
                 });
@@ -183,13 +192,23 @@ public class Leikbord extends Pane {
         objT.play();
     }
 
+    public void closeGame(){
+        t.stop();
+        objT.stop();
+        ammoT.stop();
+        gameover = true;
+    }
+
+    public boolean isGameover(){
+        return gameover;
+    }
     private void checkAmmoOutOfMap(){
         for(Ammo a : ammo){
             if(a.getY()==0){
                 getChildren().remove(a);
             }
         }
-        if(ammo.size()>10){
+        if(ammo.size()%10 == 0){
             ammo.remove(10, ammo.size());
         }
     }
