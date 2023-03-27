@@ -39,8 +39,8 @@ public class GameOver {
     private final File saveFile = new File("Scoreboard.txt");
 
     public GameOver(){
-        iLagi();
-        fxLokaStig.setText("Þú náði: " + data.getScore() + " stig");
+        //iLagi();
+        //fxLokaStig.setText("Þú náði: " + data.getScore() + " stig");
 
         if (saveFile.exists()){
             try {

@@ -51,7 +51,7 @@ public class Game {
     }
 
 
-    public void scoreUp(){
+    public void addScore(){
         points.set(getPoints()+1);
     }
 
