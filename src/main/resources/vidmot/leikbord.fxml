@@ -3,6 +3,11 @@
 
 <fx:root minHeight="290" minWidth="245" type="javafx.scene.layout.Pane"
          xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+<<<<<<< HEAD
 
 
+=======
+    <children>
+    </children>
+>>>>>>> 5b8bfbec92981336815f2f2cc9cd53e4de0824ba
 </fx:root>
