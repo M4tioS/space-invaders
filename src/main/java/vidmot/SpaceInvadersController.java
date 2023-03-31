@@ -32,6 +32,8 @@ public class SpaceInvadersController {
     private Label fxScoreMain;
     @FXML
     private Leikbord fxGamePane;
+    @FXML
+    private Label fxLevel;
     public static final String PLAY_AGAIN = ": Want to try again?";
     private final Game game = new Game();
     private static final HashMap<KeyCode, Direction> map = new HashMap<>();
@@ -105,13 +107,10 @@ public class SpaceInvadersController {
      */
     public void setLevel(){
         int i = game.getPoints();
-        if (i % 4999 == 0 && i > 1){ //53 is a prime
+        if (i % 50 == 0 && i > 1){ //53 is a prime
             game.levelUp();
-            double current = t.getRate();
-            t.setRate(current * 1.2);
-
+            fxLevel.setText(String.valueOf(game.getLevel()));
         }
-
     }
 
     /**
