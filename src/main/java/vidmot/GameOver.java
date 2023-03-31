@@ -20,7 +20,7 @@ import java.util.List;
 
 public class GameOver {
     @FXML
-    public Label fxLokaStig;
+    private Label fxLokaStig;
     @FXML
     private AnchorPane fxAnchorPane;
     @FXML
@@ -30,17 +30,16 @@ public class GameOver {
     @FXML
     private Button fxAddScore;
     @FXML
-    private Button fxPlayAgain;
-    @FXML
     private Button fxExit;
     private final static String TITLE = "Space Invaders!";
     private final Data data = Data.getInstance();
     private final File saveFile = new File("Scoreboard.txt");
 
-    public GameOver(){
-        //iLagi();
+    public void initialize(){
+        iLagi();
         fxLokaStig.setText(data.getScore() + " stig og ");
-        System.out.println(data.getScore());
+
+
 
         if (saveFile.exists()){
             try {
@@ -54,12 +53,20 @@ public class GameOver {
 
     }
 
+    /**
+     * Regla sem bindar takka við textfield
+     * Þarf að setja username inn til þess að geta bætt sig á scoreboard
+     */
     private void iLagi() {
-        fxUsername.setText("null");
         Node fxIlagi = fxAddScore;
         fxIlagi.disableProperty().bind(fxUsername.textProperty().isEmpty());
     }
 
+    /**
+     * Bæta við stig eftir notandi settur inn usernamið inn
+     * Vista þvi í txt skrá
+     * Óvirkja svo textfield og takka
+     */
     @FXML
     private void addScoreHandler() {
         fxListView.getItems().add(data.getScore() + " --- " + fxUsername.getText());
