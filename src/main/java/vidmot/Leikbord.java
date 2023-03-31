@@ -270,14 +270,11 @@ public class Leikbord extends Pane {
         fxGeimskip = new Geimskip();
         getChildren().add(fxGeimskip);
         System.out.println(getHeight() + " og " + getWidth());
-        setPoistionSpaceShip();
+        fxGeimskip.setY(400);
+        fxGeimskip.setX(180);
         return fxGeimskip;
     }
 
-    private void setPoistionSpaceShip(){
-        fxGeimskip.setY(425);
-        fxGeimskip.setX(180);
-    }
     public void harderMode(){
             t.setRate(t.getRate()* 1.05);
             objT.setRate(objT.getRate()*1.05);

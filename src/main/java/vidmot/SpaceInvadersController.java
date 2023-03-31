@@ -30,8 +30,6 @@ public class SpaceInvadersController {
     private Leikbord fxGamePane;
     @FXML
     private Label fxLevel;
-
-
     private final Game game = new Game();
     private static final HashMap<KeyCode, Direction> map = new HashMap<>();
     private Timeline t;
