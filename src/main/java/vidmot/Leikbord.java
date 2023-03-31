@@ -233,7 +233,6 @@ public class Leikbord extends Pane {
         if(meteorOfMap() != null){
             this.getChildren().remove(meteorOfMap());
             meteors.remove(meteorOfMap());
-
         }
     }
 
