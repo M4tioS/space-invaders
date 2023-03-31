@@ -99,15 +99,7 @@ public class SpaceInvadersController {
 
     /**
      * Hækka level eftir 4999 stig og auka hraða
-     */
-    public void setLevel(){
-        int i = game.getPoints();
-        if (i % 50 == 0 && i > 1){ //53 is a prime
-            game.levelUp();
-            fxLevel.setText(String.valueOf(game.getLevel()));
 
-        }
-    }
 
     /**
      * KeyFrame til að byrja leik skoðar score hverja 20ms
@@ -115,7 +107,6 @@ public class SpaceInvadersController {
     public void startTheGame(){
         KeyFrame k = new KeyFrame(Duration.millis(game.getInterval()),
                 e-> {
-                    setLevel();
                     fxScoreMain.setText(String.valueOf(game.getPoints()));
                     if(fxGamePane.isGameover()){
                         try {
