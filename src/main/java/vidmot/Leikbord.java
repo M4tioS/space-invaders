@@ -121,7 +121,7 @@ public class Leikbord extends Pane {
         this.getChildren().add(a);
         ammo.add(a);
         a.setY(getShip().getY());
-        a.setX(getShip().getX());
+        a.setX(getShip().getX()+25);
         a.moveAmmo();
     }
 
