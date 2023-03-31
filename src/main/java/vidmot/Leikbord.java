@@ -21,6 +21,7 @@ public class Leikbord extends Pane {
     private SpaceInvadersController controller;
 
     private Timeline t;
+    private int i;
     private Timeline objT;
     private Timeline ammoT;
     private Timeline deleteAmmoT;
@@ -76,6 +77,7 @@ public class Leikbord extends Pane {
                         deleteMeteor(getMeteors().get(i));
                         deleteAmmo(value);
                         setExtraScore();
+                        harderMode();
                     }
 
                 }
@@ -213,11 +215,7 @@ public class Leikbord extends Pane {
                     for(Loftstein m: meteors) if (meteorHitSpaceShip(m)){
                         closeGame();
                     }
-                    System.out.println("Meteor fjoldi: " + meteors.size());
-                    System.out.println("Ammo fjoldi: " + ammo.size());
-                    if(returnExtraScore() == 100){
-                        harderMode();
-                    }
+
 
                 });
         objT = new Timeline(k);
@@ -281,7 +279,8 @@ public class Leikbord extends Pane {
         fxGeimskip.setX(180);
     }
     public void harderMode(){
-        t.setRate(t.getRate()+ t.getRate()*0.1);
+            t.setRate(t.getRate()* 1.05);
+            objT.setRate(objT.getRate()*1.05);
     }
 
     /**
