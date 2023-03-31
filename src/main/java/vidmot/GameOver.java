@@ -1,6 +1,5 @@
 package vidmot;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class GameOver {
     @FXML
-    private Label fxLokaStig;
+    public Label fxLokaStig;
     @FXML
     private AnchorPane fxAnchorPane;
     @FXML
@@ -40,7 +39,8 @@ public class GameOver {
 
     public GameOver(){
         //iLagi();
-        //fxLokaStig.setText("Þú náði: " + data.getScore() + " stig");
+        fxLokaStig.setText(data.getScore() + " stig og ");
+        System.out.println(data.getScore());
 
         if (saveFile.exists()){
             try {
@@ -55,6 +55,7 @@ public class GameOver {
     }
 
     private void iLagi() {
+        fxUsername.setText("null");
         Node fxIlagi = fxAddScore;
         fxIlagi.disableProperty().bind(fxUsername.textProperty().isEmpty());
     }

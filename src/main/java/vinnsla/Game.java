@@ -41,7 +41,9 @@ public class Game {
     }
 
 
-    // Byr til nyja leik, endurstillur points og level. Byr til nyja skip
+    /**
+     *  Byr til nyja leik, endurstillur points og level. Byr til nyja skip
+     */
     public void newGame() {
         points.set(0);
         level.set(1);

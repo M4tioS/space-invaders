@@ -79,6 +79,17 @@ public class SpaceInvadersController {
     }
 
     /**
+     * Kallar á föll til að endurstilla lofsteina
+     * Núllstílla stig og level
+     * Byrja Timeline frá upphafi
+     */
+    public void newGame(){
+        fxGamePane.newGame();
+        game.newGame();
+        t.setRate(1);
+        t.playFromStart();
+    }
+    /**
      * Býrta AlertDialog til að byrja nýja leik eða fara á scoreboard
      * @param s skilaboð
      * @throws Exception
@@ -86,7 +97,7 @@ public class SpaceInvadersController {
     private void synaAlert(String s) throws Exception {
         Alert a = new AdvorunDialog("GAMEOVER", SpaceInvadersApplication.TITLE, s + PLAY_AGAIN);
         Optional<ButtonType> u = a.showAndWait();
-        if (u.isPresent() && !u.get().getButtonData().isCancelButton()) System.out.println("Nyr leikur");
+        if (u.isPresent() && !u.get().getButtonData().isCancelButton()) newGame();
         else {
             data.setScore(game.getPoints());
             lostScene();
