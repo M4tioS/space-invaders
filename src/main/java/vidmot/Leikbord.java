@@ -18,12 +18,13 @@ public class Leikbord extends Pane {
     private Geimskip fxGeimskip;
     @FXML
     private Leikbord fxLeikbord;
-    private Game game;
+    private SpaceInvadersController controller;
 
     private Timeline t;
     private Timeline objT;
     private Timeline ammoT;
     private Timeline deleteAmmoT;
+    private int extraScore = 0;
 
     private boolean gameover = false;
     private int count = 0;
@@ -74,11 +75,19 @@ public class Leikbord extends Pane {
                     if (didHit(getMeteors().get(i))) {
                         deleteMeteor(getMeteors().get(i));
                         deleteAmmo(value);
+                        setExtraScore();
                     }
+
                 }
             });
         }
+    }
 
+    public void setExtraScore(){
+        extraScore += 50;
+    }
+    public int returnExtraScore(){
+        return extraScore;
     }
 
     private void deleteAmmo(Ammo a){
@@ -148,6 +157,7 @@ public class Leikbord extends Pane {
         shootHitMeteor();
         newMeteorLoop();
         moveObjects();
+
     }
 
     /**
@@ -205,6 +215,10 @@ public class Leikbord extends Pane {
                     }
                     System.out.println("Meteor fjoldi: " + meteors.size());
                     System.out.println("Ammo fjoldi: " + ammo.size());
+                    if(returnExtraScore() == 100){
+                        harderMode();
+                    }
+
                 });
         objT = new Timeline(k);
         objT.setCycleCount(Timeline.INDEFINITE);
@@ -266,6 +280,9 @@ public class Leikbord extends Pane {
     private void setPoistionSpaceShip(){
         fxGeimskip.setY(425);
         fxGeimskip.setX(180);
+    }
+    public void harderMode(){
+        t.setRate(t.getRate()+ t.getRate()*0.1);
     }
 
     /**

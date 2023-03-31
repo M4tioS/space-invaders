@@ -57,6 +57,8 @@ public class Game {
         points.set(getPoints()+1);
     }
 
+    public void addSpesificScore(int p){ points.set(getPoints()+p);}
+
     public void levelUp(){
         level.set(getLevel()+1);
     }

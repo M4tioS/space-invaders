@@ -136,8 +136,9 @@ public class SpaceInvadersController {
             game.levelUp();
             double current = t.getRate();
             t.setRate(current * 1.2);
+
         }
-        game.addScore();
+
     }
 
     /**
@@ -151,6 +152,7 @@ public class SpaceInvadersController {
                     if(fxGamePane.isGameover()){
                         leikLokid();
                     }
+                    game.setPoints(fxGamePane.returnExtraScore());
                 });
         t = new Timeline(k);           // tengjum timeline og tímabilið
         t.setCycleCount(Timeline.INDEFINITE);// hve lengi tímalínan keyrist
