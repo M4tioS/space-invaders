@@ -38,6 +38,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.wueasy.admin</groupId>
+            <artifactId>wueasy-admin-datamodel</artifactId>
+            <version>1.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>

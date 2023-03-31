@@ -67,15 +67,10 @@ public class SpaceInvadersController {
     /**
      * Stoppa animation og kalla á Alert fall
      */
-    public void leikLokid(){
+    public void leikLokid() throws IOException {
         t.stop();
-        Platform.runLater(() -> {
-            try {
-                synaAlert("GAMOVER");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+        data.setScore(game.getPoints());
+        gameOverScene();
     }
 
     /**
@@ -83,29 +78,7 @@ public class SpaceInvadersController {
      * Núllstílla stig og level
      * Byrja Timeline frá upphafi
      */
-    public void newGame(){
-        fxGamePane.newGame();
-        game.newGame();
-        t.setRate(1);
-        t.playFromStart();
-    }
-    /**
-     * Býrta AlertDialog til að byrja nýja leik eða fara á scoreboard
-     * @param s skilaboð
-     * @throws Exception
-     */
-    private void synaAlert(String s) throws Exception {
-        Alert a = new AdvorunDialog("GAMEOVER", SpaceInvadersApplication.TITLE, s + PLAY_AGAIN);
-        Optional<ButtonType> u = a.showAndWait();
-        if (u.isPresent() && !u.get().getButtonData().isCancelButton()) newGame();
-        else {
-            data.setScore(game.getPoints());
-            lostScene();
-        }
-
-    }
-
-    private void lostScene() throws IOException {
+    private void gameOverScene() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gameover-view.fxml")));
         Stage stage = (Stage) fxBorderPane.getScene().getWindow();
         Scene scene = new Scene(root);
@@ -128,11 +101,11 @@ public class SpaceInvadersController {
     }
 
     /**
-     * Hækka level eftir 1009 stig og auka hraða
+     * Hækka level eftir 4999 stig og auka hraða
      */
     public void setLevel(){
         int i = game.getPoints();
-        if (i % 1009 == 0 && i > 1){ //53 is a prime
+        if (i % 4999 == 0 && i > 1){ //53 is a prime
             game.levelUp();
             double current = t.getRate();
             t.setRate(current * 1.2);
@@ -149,7 +122,11 @@ public class SpaceInvadersController {
                     setLevel();
                     fxScoreMain.setText(String.valueOf(game.getPoints()));
                     if(fxGamePane.isGameover()){
-                        leikLokid();
+                        try {
+                            leikLokid();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     }
                 });
         t = new Timeline(k);           // tengjum timeline og tímabilið
