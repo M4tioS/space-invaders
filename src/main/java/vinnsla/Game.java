@@ -2,44 +2,55 @@ package vinnsla;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import vidmot.Geimskip;
 
 public class Game {
+    private final IntegerProperty points = new SimpleIntegerProperty();
+    private final IntegerProperty level = new SimpleIntegerProperty();
+    private static final int INTERVAL = 20;
 
-
-    private IntegerProperty points = new SimpleIntegerProperty();
-
-
-    private IntegerProperty level = new SimpleIntegerProperty();
-    private final int Interval = 20;
-
-    // Getter and setter points
+    /**
+     * Getter fyrir stig
+     * @return sitg
+     */
     public int getPoints() {
         return points.get();
     }
 
-    public IntegerProperty pointsProperty() {
-        return points;
-    }
-
+    /**
+     * Setter fyrir stig
+     * @param points stig
+     */
     public void setPoints(int points) {
         this.points.set(points);
     }
 
-
+    /**
+     * Getter fyrir level
+     * @return level
+     */
     public int getLevel() {
         return level.get();
     }
 
-    public IntegerProperty levelProperty() {
-        return level;
+
+
+
+    public int getInterval() { return INTERVAL;}
+
+
+    /**
+     * Hækka stig um 1
+     */
+    public void addScore(){
+        points.set(getPoints()+1);
     }
 
-    // Getter and setter level
-    public void setLevel(int level) {
-        this.level.set(level);
+    /**
+     * Hækka level um 1
+     */
+    public void levelUp(){
+        level.set(getLevel()+1);
     }
-
 
     /**
      *  Byr til nyja leik, endurstillur points og level. Byr til nyja skip
@@ -47,19 +58,5 @@ public class Game {
     public void newGame() {
         points.set(0);
         level.set(1);
-    }
-
-    public int getIntervall() { return Interval;
-    }
-
-
-    public void addScore(){
-        points.set(getPoints()+1);
-    }
-
-    public void addSpesificScore(int p){ points.set(getPoints()+p);}
-
-    public void levelUp(){
-        level.set(getLevel()+1);
     }
 }

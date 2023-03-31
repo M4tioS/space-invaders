@@ -50,7 +50,6 @@ public class GameOver {
                 e.printStackTrace();
             }
         }
-
     }
 
     /**

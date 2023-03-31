@@ -2,13 +2,10 @@ package vidmot;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -21,7 +18,6 @@ import vinnsla.Game;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.Optional;
 
 public class SpaceInvadersController {
 
@@ -34,7 +30,8 @@ public class SpaceInvadersController {
     private Leikbord fxGamePane;
     @FXML
     private Label fxLevel;
-    public static final String PLAY_AGAIN = ": Want to try again?";
+
+
     private final Game game = new Game();
     private static final HashMap<KeyCode, Direction> map = new HashMap<>();
     private Timeline t;
@@ -110,6 +107,7 @@ public class SpaceInvadersController {
         if (i % 50 == 0 && i > 1){ //53 is a prime
             game.levelUp();
             fxLevel.setText(String.valueOf(game.getLevel()));
+
         }
     }
 
@@ -117,7 +115,7 @@ public class SpaceInvadersController {
      * KeyFrame til að byrja leik skoðar score hverja 20ms
      */
     public void startTheGame(){
-        KeyFrame k = new KeyFrame(Duration.millis(game.getIntervall()),
+        KeyFrame k = new KeyFrame(Duration.millis(game.getInterval()),
                 e-> {
                     setLevel();
                     fxScoreMain.setText(String.valueOf(game.getPoints()));
