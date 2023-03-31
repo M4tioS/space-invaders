@@ -28,7 +28,6 @@ public class SpaceInvadersController {
     private Label fxScoreMain;
     @FXML
     private Leikbord fxGamePane;
-    public static final String PLAY_AGAIN = ": Want to try again?";
     private final Game game = new Game();
     private static final HashMap<KeyCode, Direction> map = new HashMap<>();
     private Timeline t;
@@ -106,7 +105,6 @@ public class SpaceInvadersController {
             double current = t.getRate();
             t.setRate(current * 1.2);
         }
-
     }
 
     /**
