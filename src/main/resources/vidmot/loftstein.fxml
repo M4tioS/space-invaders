@@ -3,9 +3,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-
-<fx:root fx:id="fxMeteor" fitHeight="72.0" fitWidth="51.0" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="fxMeteor" fitHeight="72.0" fitWidth="77.0" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <image>
-      <Image url="@../stylesheets/photos/Daco_1054722.png" />
+      <Image url="@../stylesheets/photos/main.png" />
    </image>
 </fx:root>
