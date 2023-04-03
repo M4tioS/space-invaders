@@ -3,8 +3,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<fx:root fx:id="fxGeimskip" fitHeight="69.0" fitWidth="69.0" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="fxGeimskip" fitHeight="53.0" fitWidth="49.0" type="javafx.scene.image.ImageView" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <image>
-      <Image url="@../stylesheets/photos/pngegg.png" />
+      <Image url="@../stylesheets/photos/testship.png" />
    </image>
 </fx:root>
