@@ -96,7 +96,7 @@ public class Leikbord extends Pane {
         getChildren().remove(a);
     }
     public void shootingAmmo(){
-        KeyFrame k = new KeyFrame(Duration.millis(500),
+        KeyFrame k = new KeyFrame(Duration.millis(750),
                 e-> {
                     shoot();
                 });
@@ -106,13 +106,13 @@ public class Leikbord extends Pane {
     }
 
     public void deletingAmmo(){
-        KeyFrame k = new KeyFrame(Duration.millis(500),
+        KeyFrame k = new KeyFrame(Duration.millis(750),
                 e-> {
                     deleteShoot();
                 });
         deleteAmmoT = new Timeline(k);
         deleteAmmoT.setCycleCount(Timeline.INDEFINITE);
-        deleteAmmoT.setDelay(Duration.millis(5000));
+        deleteAmmoT.setDelay(Duration.millis(3750));
         deleteAmmoT.play();
     }
 
@@ -216,7 +216,8 @@ public class Leikbord extends Pane {
                         closeGame();
                     }
 
-
+                System.out.println("Fjöldi ammo: " + ammo.size());
+                System.out.println("Fjöldi meteor: " + meteors.size());
                 });
         objT = new Timeline(k);
         objT.setCycleCount(Timeline.INDEFINITE);
