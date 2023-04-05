@@ -33,7 +33,7 @@ public class Leikbord extends Pane {
     private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
 
 
-
+    // test
     // Constructor
     public Leikbord(){
         FXML_Lestur.lesa(this, "leikbord.fxml");
