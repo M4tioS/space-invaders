@@ -1,12 +1,16 @@
+
+
 .root{
--fx-font-size: 14px;
+-fx-font-family: "Monospace";
+-fx-font-size: 25px;
 -fx-background-color: #000;
 -fx-text-fill: #FFFFFF;
+-fx-font-weight: bold;
 }
+
 
 .bord{
 -fx-background-image: url("photos/background.gif")
 }
-.root{
--fx-font-size: 16px;
-}
+
+

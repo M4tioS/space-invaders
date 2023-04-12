@@ -1,9 +1,11 @@
 .root{
--fx-font-size: 14px;
+-fx-font-size: 16px;
 -fx-background-color: #223555;
 -fx-border-style: solid inside;
 -fx-border-width: 7px;
 -fx-border-color: #c7b305;
+-fx-font-family: "Monospace";
+-fx-font-weight: bold;
 }
 .button{
 -fx-background-color: #F9E102;

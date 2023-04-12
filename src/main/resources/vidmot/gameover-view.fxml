@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="fxAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="643.0" stylesheets="@../stylesheets/styles-gameover.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.GameOver">
    <children>
-      <Label fx:id="fxLokaStig" layoutX="115.0" layoutY="222.0" prefHeight="18.0" prefWidth="115.0" text="0 stig og 0 level" />
+      <Label fx:id="fxLokaStig" layoutX="123.0" layoutY="222.0" prefHeight="18.0" prefWidth="213.0" text="0 stig og 0 level" textFill="WHITE" />
       <ListView fx:id="fxListView" layoutX="338.0" layoutY="222.0" prefHeight="149.0" prefWidth="272.0" />
       <Label layoutX="33.0" layoutY="253.0" prefHeight="37.0" prefWidth="86.0" text="Username" textFill="WHITE">
          <font>
@@ -20,11 +20,10 @@
       </Label>
       <TextField fx:id="fxUsername" layoutX="120.0" layoutY="256.0" />
       <Button fx:id="fxAddScore" layoutX="157.0" layoutY="297.0" mnemonicParsing="false" onAction="#addScoreHandler" text="Add to scoreboard" />
-      <Button fx:id="fxPlayAgain" layoutX="199.0" layoutY="347.0" mnemonicParsing="false" onAction="#playAgainHandler" prefHeight="20.0" prefWidth="95.0" text="Play Again!" />
+      <Button fx:id="fxPlayAgain" layoutX="199.0" layoutY="347.0" mnemonicParsing="false" onAction="#playAgainHandler" prefHeight="24.0" prefWidth="109.0" text="Play Again!" />
       <Button fx:id="fxExit" layoutX="67.0" layoutY="347.0" mnemonicParsing="false" onAction="#exitGameHandler" prefHeight="20.0" prefWidth="95.0" text="Exit" />
-      <ImageView fitHeight="193.0" fitWidth="626.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../stylesheets/photos/spanceinvaderforever.png"/>
+      <ImageView fitHeight="193.0" fitWidth="626.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../stylesheets/photos/spanceinvaderforever.png" />
       </ImageView>
    </children>
 </AnchorPane>
