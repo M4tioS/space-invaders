@@ -136,6 +136,8 @@ public class Leikbord extends Pane {
     private void deleteMeteor(Loftstein m){
         getChildren().remove(m);
         getMeteors().remove(m);
+        Explosion explosion = new Explosion();
+        getChildren().add(explosion);
     }
 
 
