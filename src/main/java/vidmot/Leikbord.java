@@ -7,35 +7,27 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import vinnsla.Game;
 
 import java.util.Random;
 
 public class Leikbord extends Pane {
-
-    // Tilviksbreytur
     @FXML
     private Geimskip fxGeimskip;
-    @FXML
-    private Leikbord fxLeikbord;
-    private SpaceInvadersController controller;
-
     private Timeline t;
-    private int i;
     private Timeline objT;
     private Timeline ammoT;
     private Timeline deleteAmmoT;
-    private int extraScore = 0;
+    private int score = 0;
+    private boolean gameOver = false;
+    private final ObservableList<Ammo> ammo = FXCollections.observableArrayList();
+    private final ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
 
-    private boolean gameover = false;
-    private int count = 0;
-    private ObservableList<Ammo> ammo = FXCollections.observableArrayList();
-    private ObservableList<Loftstein> meteors = FXCollections.observableArrayList();
-
-
-    // Constructor
+    /**
+     * Creates new ship, meteors at specific y and random x
+     * Start all KeyFrames that are needed
+     */
     public Leikbord(){
-        FXML_Lestur.lesa(this, "leikbord.fxml");
+        FXML_Lestur.lesa(this, "leikbord.fxml"); // read in fxml and set this as a controller
         newSpaceship();
         startGameNewMeteor();
         shootingAmmo();
@@ -63,11 +55,19 @@ public class Leikbord extends Pane {
         }
     }
 
+    /**
+     * Check if meteor hit the ship
+     * @param m meteor to check
+     * @return boolean true if hit
+     */
     private boolean meteorHitSpaceShip(Loftstein m){
 
         return fxGeimskip.getBoundsInParent().intersects(m.getBoundsInParent());
     }
 
+    /**
+     * Check if a shot hit meteor with a listener
+     */
     public void shootHitMeteor() {
         for (Ammo value : ammo) {
             value.yProperty().addListener((observable, oldValue, newValue) -> {
@@ -78,43 +78,58 @@ public class Leikbord extends Pane {
                         setExtraScore();
                         harderMode();
                     }
-
                 }
             });
         }
     }
 
+    /**
+     * Adding score after hit meteor
+     */
     public void setExtraScore(){
-        extraScore += 50;
-    }
-    public int returnExtraScore(){
-        return extraScore;
+        score += 50;
     }
 
+    /**
+     * Getter for score
+     * @return score
+     */
+    public int getScore(){
+        return score;
+    }
+
+    /**
+     * Delete shots
+     * @param a a shot to delete
+     */
     private void deleteAmmo(Ammo a){
         getChildren().remove(a);
     }
+
+    /**
+     * KeyFram for shooting
+     */
     public void shootingAmmo(){
-        KeyFrame k = new KeyFrame(Duration.millis(750),
-                e-> {
-                    shoot();
-                });
+        KeyFrame k = new KeyFrame(Duration.millis(750), e->shoot());
         ammoT = new Timeline(k);
         ammoT.setCycleCount(Timeline.INDEFINITE);
         ammoT.play();
     }
 
+    /**
+     * KeyFram for deleting ammo
+     */
     public void deletingAmmo(){
-        KeyFrame k = new KeyFrame(Duration.millis(750),
-                e-> {
-                    deleteShoot();
-                });
+        KeyFrame k = new KeyFrame(Duration.millis(750), e-> deleteShoot());
         deleteAmmoT = new Timeline(k);
         deleteAmmoT.setCycleCount(Timeline.INDEFINITE);
         deleteAmmoT.setDelay(Duration.millis(3750));
         deleteAmmoT.play();
     }
 
+    /**
+     * Adding shots
+     */
     private void shoot(){
         Ammo a = new Ammo();
         this.getChildren().add(a);
@@ -124,15 +139,19 @@ public class Leikbord extends Pane {
         a.moveAmmo();
     }
 
+    /**
+     * Deleting shots
+     */
     private void deleteShoot(){
         ammo.remove(ammo.get(0));
         this.getChildren().remove(ammo.get(0));
 
     }
-        /**
-         * Eyðir út lofsteinn sem var við árekstur
-         * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
-         */
+
+    /**
+     * Eyðir út lofsteinn sem var við árekstur
+     * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
+     */
     private void deleteMeteor(Loftstein m){
         getChildren().remove(m);
         getMeteors().remove(m);
@@ -140,28 +159,6 @@ public class Leikbord extends Pane {
         getChildren().add(explosion);
     }
 
-
-    /**
-     * Eyðir út öllum loftsteinum
-     */
-    public void clearTable(){
-        for(Loftstein m: meteors) getChildren().remove(m);
-        meteors.clear();
-    }
-
-
-    /**
-     * Þegar ný leikur er byrjað er hreinsað allt og búið upp á nýtt
-     */
-    public void newGame(){
-        clearTable();
-        fxGeimskip = newSpaceship();
-        startGameNewMeteor();
-        shootHitMeteor();
-        newMeteorLoop();
-        moveObjects();
-
-    }
 
     /**
      * Athugar hvort fxAmmo er stefna á sama y-ás eins og lofsteinn
@@ -181,10 +178,7 @@ public class Leikbord extends Pane {
      * Lykja til að búa til nýta lofsteina
      */
     public void newMeteorLoop(){
-        KeyFrame k = new KeyFrame(Duration.millis(1300),
-                e-> {
-                    newMeteor();
-                });
+        KeyFrame k = new KeyFrame(Duration.millis(1300), e-> newMeteor());
         t = new Timeline(k);
         t.setCycleCount(Timeline.INDEFINITE);
         t.play();
@@ -216,43 +210,61 @@ public class Leikbord extends Pane {
                     for(Loftstein m: meteors) if (meteorHitSpaceShip(m)){
                         closeGame();
                     }
-
-                System.out.println("Fjöldi ammo: " + ammo.size());
-                System.out.println("Fjöldi meteor: " + meteors.size());
                 });
         objT = new Timeline(k);
         objT.setCycleCount(Timeline.INDEFINITE);
         objT.play();
     }
+
+    /**
+     * Checks position of each meteor
+     * @return meteor out of the map or null
+     */
     private Loftstein meteorOfMap(){
-        for(Loftstein m: meteors) if(m.getY()>435) return m;
+        for(Loftstein m: meteors){
+            if(m.getY()>435) return m;
+        }
         return null;
     }
 
+    /**
+     * Calls the check position of meteor
+     * if there is a meteor out of the map it is deleted
+     */
     private void meteorDeleteOfMap(){
         if(meteorOfMap() != null){
-            this.getChildren().remove(meteorOfMap());
-            meteors.remove(meteorOfMap());
+            deleteMeteor(meteorOfMap());
         }
     }
 
+    /**
+     * Stop all animation when game is finished
+     */
     public void closeGame(){
         t.stop();
         objT.stop();
         ammoT.stop();
         deleteAmmoT.stop();
-        gameover = true;
+        gameOver = true;
     }
 
-    public boolean isGameover(){
-        return gameover;
+    /**
+     * Checks if the game is finished or not
+     * @return true if closeGame() has been called and game if finished
+     */
+    public boolean isGameOver(){
+        return gameOver;
     }
 
+    /**
+     * Move shots up
+     */
     private void moveAmmo(){
         for (Ammo value : ammo) {
             value.moveAmmo();
         }
     }
+
     /**
      * Getter fyrir skip
      * @return geimskip hlut
@@ -263,9 +275,8 @@ public class Leikbord extends Pane {
 
     /**
      * Gera nýtt geimskip ef núverandi er til eyða þvi
-     * @return nýtt geimskip
      */
-    public Geimskip newSpaceship(){
+    public void newSpaceship(){
         if(fxGeimskip != null){
             getChildren().remove(fxGeimskip);
         }
@@ -274,13 +285,16 @@ public class Leikbord extends Pane {
         System.out.println(getHeight() + " og " + getWidth());
         fxGeimskip.setY(400);
         fxGeimskip.setX(this.getWidth()/2);
-        return fxGeimskip;
     }
 
+    /**
+     * Speeds up keyframe for meteors movement and spawn
+     */
     public void harderMode(){
             t.setRate(t.getRate()* 1.05);
             objT.setRate(objT.getRate()*1.05);
     }
+
 
     /**
      * Skilar listan af loftsteinum

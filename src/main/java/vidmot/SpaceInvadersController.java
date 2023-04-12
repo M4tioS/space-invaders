@@ -16,7 +16,6 @@ import vinnsla.Data;
 import vinnsla.Game;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class SpaceInvadersController {
@@ -32,7 +31,6 @@ public class SpaceInvadersController {
     private final Game game = new Game();
     private Timeline t;
     private final Data data = Data.getInstance();
-    private final static int OFFSET = 5;
 
     public void initialize(){
         fxGamePane.getStyleClass().add("bord");
@@ -48,9 +46,9 @@ public class SpaceInvadersController {
                 event -> {
                     try {
                         if ((event.getCode()) == KeyCode.RIGHT){
-                           fxGamePane.getShip().moveRight(OFFSET);
+                           fxGamePane.getShip().moveRight();
                         } else if ((event.getCode()) == KeyCode.LEFT){
-                            fxGamePane.getShip().moveLeft(OFFSET);
+                            fxGamePane.getShip().moveLeft();
                         }
                     } catch (NullPointerException e){
                         event.consume();
@@ -87,14 +85,14 @@ public class SpaceInvadersController {
         KeyFrame k = new KeyFrame(Duration.millis(game.getInterval()),
                 e-> {
                     fxScoreMain.setText(String.valueOf(game.getPoints()));
-                    if(fxGamePane.isGameover()){
+                    if(fxGamePane.isGameOver()){
                         try {
                             leikLokid();
                         } catch (IOException ex) {
                             throw new RuntimeException(ex);
                         }
                     }
-                    game.setPoints(fxGamePane.returnExtraScore());
+                    game.setPoints(fxGamePane.getScore());
                 });
         t = new Timeline(k);           // tengjum timeline og tímabilið
         t.setCycleCount(Timeline.INDEFINITE);// hve lengi tímalínan keyrist

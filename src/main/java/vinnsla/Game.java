@@ -33,8 +33,10 @@ public class Game {
     }
 
 
-
-
+    /**
+     * Getter for Interval
+     * @return Interval for keyframe
+     */
     public int getInterval() { return INTERVAL;}
 
 

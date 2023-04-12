@@ -35,10 +35,13 @@ public class GameOver {
     private final Data data = Data.getInstance();
     private final File saveFile = new File("Scoreboard.txt");
 
+    /**
+     * Set up rule for checkbox
+     * Check if saveFile exists and read if it does
+     */
     public void initialize(){
-        iLagi();
+        checkText();
         fxLokaStig.setText(data.getScore() + " stig og ");
-
 
 
         if (saveFile.exists()){
@@ -56,7 +59,7 @@ public class GameOver {
      * Regla sem bindar takka við textfield
      * Þarf að setja username inn til þess að geta bætt sig á scoreboard
      */
-    private void iLagi() {
+    private void checkText() {
         Node fxIlagi = fxAddScore;
         fxIlagi.disableProperty().bind(fxUsername.textProperty().isEmpty());
     }
