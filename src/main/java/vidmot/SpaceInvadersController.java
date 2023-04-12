@@ -23,7 +23,6 @@ public class SpaceInvadersController {
 
     @FXML
     private BorderPane fxBorderPane;
-    // Tilviksbreytur
     @FXML
     private Label fxScoreMain;
     @FXML
@@ -31,9 +30,9 @@ public class SpaceInvadersController {
     @FXML
     private Label fxLevel;
     private final Game game = new Game();
-    private static final HashMap<KeyCode, Direction> map = new HashMap<>();
     private Timeline t;
     private final Data data = Data.getInstance();
+    private final static int OFFSET = 5;
 
     public void initialize(){
         fxGamePane.getStyleClass().add("bord");
@@ -45,15 +44,13 @@ public class SpaceInvadersController {
      * @param s sena sem það er gert á
      */
     public void orvatakkar(Scene s) {
-        map.put(KeyCode.RIGHT, Direction.RIGHT);
-        map.put(KeyCode.LEFT, Direction.LEFT);
         s.addEventFilter(KeyEvent.ANY,
                 event -> {
                     try {
                         if ((event.getCode()) == KeyCode.RIGHT){
-                           moveShipRight();
+                           fxGamePane.getShip().moveRight(OFFSET);
                         } else if ((event.getCode()) == KeyCode.LEFT){
-                            moveShipLeft();
+                            fxGamePane.getShip().moveLeft(OFFSET);
                         }
                     } catch (NullPointerException e){
                         event.consume();
@@ -82,24 +79,6 @@ public class SpaceInvadersController {
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * Færir geimskipið til hægri um 5 pixlar
-     */
-    private void moveShipRight(){
-        fxGamePane.getShip().setX(fxGamePane.getShip().getX()+5);
-    }
-
-    /**
-     * Færir geimskipið til vinstri um 5 pixlar
-     */
-    private void moveShipLeft(){
-        fxGamePane.getShip().setX(fxGamePane.getShip().getX()-5);
-    }
-
-    /**
-     * Hækka level eftir 4999 stig og auka hraða
-
 
     /**
      * KeyFrame til að byrja leik skoðar score hverja 20ms

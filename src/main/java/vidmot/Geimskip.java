@@ -6,7 +6,6 @@ import javafx.scene.image.ImageView;
 
 public class Geimskip extends ImageView {
     private IntegerProperty health;
-    private int OFFSET = 1;
 
 
     public Geimskip(){
@@ -37,7 +36,21 @@ public class Geimskip extends ImageView {
         return health;
     }
 
+    public void moveRight(int offset){
+        Leikbord p = (Leikbord) this.getParent();
+        if (p.getWidth() == getX()+50){
+            setX(getX() - offset*2);
+        } else setX(getX() + offset);
 
+    }
+
+    public void moveLeft(int offset){
+        if (0 == getX()){
+            System.out.println("X test left");
+            setX(getX() + offset*2);
+        } else setX(getX() - offset);
+
+    }
 
 
 }

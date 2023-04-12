@@ -272,7 +272,7 @@ public class Leikbord extends Pane {
         getChildren().add(fxGeimskip);
         System.out.println(getHeight() + " og " + getWidth());
         fxGeimskip.setY(400);
-        fxGeimskip.setX(180);
+        fxGeimskip.setX(this.getWidth()/2);
         return fxGeimskip;
     }
 
