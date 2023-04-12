@@ -17,6 +17,7 @@ public class Leikbord extends Pane {
     private Timeline objT;
     private Timeline ammoT;
     private Timeline deleteAmmoT;
+    private Timeline explosionT;
     private int score = 0;
     private boolean gameOver = false;
     private final ObservableList<Ammo> ammo = FXCollections.observableArrayList();
@@ -153,13 +154,32 @@ public class Leikbord extends Pane {
      * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
      */
     private void deleteMeteor(Loftstein m){
+        explosion(m);
         getChildren().remove(m);
         getMeteors().remove(m);
+
+    }
+    private void explosion(Loftstein m){
+
         Explosion explosion = new Explosion();
+        explosion.setX(m.getX());
+        explosion.setY(m.getY());
         getChildren().add(explosion);
+
+        KeyFrame k = new KeyFrame(Duration.millis(750), e-> deleteExplosion(explosion));
+        explosionT = new Timeline(k);
+        explosionT.setCycleCount(Timeline.INDEFINITE);
+        explosionT.setDelay(Duration.millis(250));
+        explosionT.play();
     }
 
-
+    private void deleteExplosion(Explosion e){
+        if(e != null){
+            getChildren().remove(e);
+        } else{
+            explosionT.stop();
+        }
+    }
     /**
      * Athugar hvort fxAmmo er stefna á sama y-ás eins og lofsteinn
      * @param m Lofsteinn
