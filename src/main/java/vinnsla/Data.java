@@ -23,7 +23,6 @@ public class Data {
      * Setter fyrir level
      * @param lvl úr Leikur
      */
-
     public void setLvl(int lvl) {
         this.lvl = lvl;
     }
@@ -32,7 +31,6 @@ public class Data {
      * Getter fyrir stig
      * @return stig
      */
-
     public int getScore() {
         return score;
     }
