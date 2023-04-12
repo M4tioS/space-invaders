@@ -46,7 +46,6 @@ public class Geimskip extends ImageView {
 
     public void moveLeft(int offset){
         if (0 == getX()){
-            System.out.println("X test left");
             setX(getX() + offset*2);
         } else setX(getX() - offset);
 
