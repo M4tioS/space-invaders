@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-
 import java.util.Random;
 
 public class Leikbord extends Pane {
@@ -74,6 +73,7 @@ public class Leikbord extends Pane {
             value.yProperty().addListener((observable, oldValue, newValue) -> {
                 for (int i = 0; i < getMeteors().size(); i++) {
                     if (didHit(getMeteors().get(i))) {
+                        explosion(getMeteors().get(i));
                         deleteMeteor(getMeteors().get(i));
                         deleteAmmo(value);
                         setExtraScore();
@@ -154,13 +154,16 @@ public class Leikbord extends Pane {
      * @param m lofsteinn sem er tekinn út ur fall (shootHitMeteor)
      */
     private void deleteMeteor(Loftstein m){
-        explosion(m);
         getChildren().remove(m);
         getMeteors().remove(m);
 
     }
-    private void explosion(Loftstein m){
 
+    /**
+     * Add exploding animation
+     * @param m enemy that has exploded
+     */
+    private void explosion(Loftstein m){
         Explosion explosion = new Explosion();
         explosion.setX(m.getX());
         explosion.setY(m.getY());
@@ -169,10 +172,14 @@ public class Leikbord extends Pane {
         KeyFrame k = new KeyFrame(Duration.millis(750), e-> deleteExplosion(explosion));
         explosionT = new Timeline(k);
         explosionT.setCycleCount(Timeline.INDEFINITE);
-        explosionT.setDelay(Duration.millis(250));
+        explosionT.setDelay(Duration.millis(150));
         explosionT.play();
     }
 
+    /**
+     * Finish animation
+     * @param e explosion to delete
+     */
     private void deleteExplosion(Explosion e){
         if(e != null){
             getChildren().remove(e);
@@ -180,6 +187,7 @@ public class Leikbord extends Pane {
             explosionT.stop();
         }
     }
+
     /**
      * Athugar hvort fxAmmo er stefna á sama y-ás eins og lofsteinn
      * @param m Lofsteinn
@@ -304,7 +312,7 @@ public class Leikbord extends Pane {
         getChildren().add(fxGeimskip);
         System.out.println(getHeight() + " og " + getWidth());
         fxGeimskip.setY(400);
-        fxGeimskip.setX(this.getWidth()/2);
+        fxGeimskip.setX(150);
     }
 
     /**

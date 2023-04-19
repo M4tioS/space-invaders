@@ -41,7 +41,7 @@ public class GameOver {
      */
     public void initialize(){
         checkText();
-        fxLokaStig.setText(data.getScore() + " stig og ");
+        fxLokaStig.setText("Þú náði " + data.getScore() + " stig ");
 
 
         if (saveFile.exists()){

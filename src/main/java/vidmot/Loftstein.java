@@ -1,7 +1,5 @@
 package vidmot;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.ImageView;
 
 public class Loftstein extends ImageView {

@@ -1,13 +1,11 @@
 package vidmot;
 
 import javafx.fxml.FXMLLoader;
-
 import java.io.IOException;
 
 /******************************************************************************
  *  Nafn    : Ebba Þóra Hvannberg
  *  T-póstur: ebba@hi.is
- *
  *  Lýsing  : Lesa fxml skrá
  *****************************************************************************/
 public class FXML_Lestur {

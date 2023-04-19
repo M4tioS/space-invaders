@@ -26,8 +26,6 @@ public class SpaceInvadersController {
     private Label fxScoreMain;
     @FXML
     private Leikbord fxGamePane;
-    @FXML
-    private Label fxLevel;
     private final Game game = new Game();
     private Timeline t;
     private final Data data = Data.getInstance();
