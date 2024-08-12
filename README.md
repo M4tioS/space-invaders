@@ -41,4 +41,23 @@ This project was developed primarily as a practice exercise. The goal was to gai
    ```bash
    git clone https://github.com/Pebble32/space-invaders.git
    ```
-2. 
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd space-invaders
+   ```
+3. **Build the project**:
+   * If you're using an IDE like IntelliJ IDEA or Eclipse, simply load the project and build it
+   * or run command
+     ```bash
+     ./mvn clean install
+     ```
+4. **Run the Game**:
+   ```bash
+   java -jar target/space-invaders.jar
+   ```
+### Controlls
+* **Arrow Keys**: Use the left and right arrow keys to control the bouncing ball as it moves through the platforms.
+* **Spacebar**: Press spacebar to file projectiles at the meteors
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
